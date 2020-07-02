@@ -20,10 +20,10 @@ router.get('/capsules', async (req, res) => {
     });
 });
 
-//@route /api/launchpad/:id
+//@route /api/landingpad/:id
 //@desc Get Landing Pad by ID
 //@access public
-router.get('/launchpad/:id', async (req, res) => {
+router.get('/landingpad/:id', async (req, res) => {
   const landingId = req.params.id;
 
   const result = await landingProvider(landingId);

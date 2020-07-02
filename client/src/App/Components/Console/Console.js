@@ -1,11 +1,11 @@
 import React from 'react';
-import { ConsoleView } from './styles';
+import { ConsoleView, StyledPre } from './styles';
 
 export default function Console({ jsonData }) {
   console.log(jsonData);
   return (
     <ConsoleView>
-      <pre>{jsonData ? JSON.stringify(jsonData, null, 2) : ''}</pre>
+      <StyledPre>{jsonData ? JSON.stringify(jsonData, null, 2) : ''}</StyledPre>
     </ConsoleView>
   );
 }

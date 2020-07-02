@@ -19,7 +19,7 @@ const HomePageWrapper = styled.div`
 
 const ConsoleWrapper = styled.div`
   height: 66%;
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   @media (max-width: 768px) {
     width: 66%;
     height: 100%;

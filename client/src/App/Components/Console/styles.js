@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
 const ConsoleView = styled.div`
-  background: #333333;
+  background: #1e1e1e;
+  color: #dcdcdc;
   height: 100%;
-  marign: 1rem;
+  font-size: 0.8rem;
   overflow: scroll;
 `;
 
-export { ConsoleView };
+const StyledPre = styled.pre`
+  margin: 0;
+  padding: 1rem;
+`;
+
+export { ConsoleView, StyledPre };
