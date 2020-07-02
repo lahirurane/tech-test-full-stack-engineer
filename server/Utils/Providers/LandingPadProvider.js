@@ -18,7 +18,7 @@ const landingProvider = (landingId) => {
         resolve({ id, full_name, status, location, status: true });
       } else {
         // fetch data from spacex api
-        const responseData = await fetchLaunchPad(landingId);
+        const responseData = await fetchLaunchPad(landingId.toUpperCase());
 
         if (responseData.status) {
           //insert launch data to the table
