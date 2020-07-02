@@ -4,13 +4,26 @@ const { NODE_ENV } = process.env;
 const isDevelopment = NODE_ENV === 'development';
 
 const reducers = {
-  spaceData: (oldState = { consoleData: null, isLoading: false, error: null }, action) => {
+  spaceData: (
+    oldState = { consoleType: '', isLoading: false, error: null, capsule: null, landing: null },
+    action
+  ) => {
     const { type } = action;
+    const data = action.payload && action.payload.result ? action.payload.result : null;
+
     switch (type) {
-      case 'SET_CONSOLE_DATA':
+      case 'SET_CONSOLE_DATA_CAPSULE':
         return {
           ...oldState,
-          consoleData: action.payload,
+          consoleType: 'capsule',
+          capsule: data,
+          isLoading: false,
+        };
+      case 'SET_CONSOLE_DATA_LANDING':
+        return {
+          ...oldState,
+          consoleType: 'landing',
+          landing: data,
           isLoading: false,
         };
       case 'SET_LOADING':
@@ -19,10 +32,20 @@ const reducers = {
           isLoading: action.payload,
         };
       case 'SET_ERROR':
+        let errorMessage = '';
+
+        if (data.error) {
+          errorMessage = data.error;
+        }
         return {
           ...oldState,
-          error: action.payload,
+          error: errorMessage,
           isLoading: false,
+        };
+      case 'SET_CONSOLE_TYPE':
+        return {
+          ...oldState,
+          consoleType: action.payload,
         };
       default:
         return oldState;

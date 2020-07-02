@@ -6,7 +6,7 @@ export const getCapsules = (dispatch) => {
     .get('http://localhost:4000/api/capsules')
     .then((res) => {
       dispatch({
-        type: 'SET_CONSOLE_DATA',
+        type: 'SET_CONSOLE_DATA_CAPSULE',
         payload: res.data,
       });
     })
@@ -19,13 +19,14 @@ export const getCapsules = (dispatch) => {
     });
 };
 
+//Get Landing pad details
 export const getLandingPad = (dispatch, landingId) => {
   setLoading(dispatch, true);
   axios
     .get(`http://localhost:4000/api/landingpad/${landingId}`)
     .then((res) => {
       dispatch({
-        type: 'SET_CONSOLE_DATA',
+        type: 'SET_CONSOLE_DATA_LANDING',
         payload: res.data,
       });
     })
@@ -36,6 +37,13 @@ export const getLandingPad = (dispatch, landingId) => {
         payload: err.response && err.response.data,
       });
     });
+};
+
+export const setErrorEmpty = (dispatch) => {
+  dispatch({
+    type: 'SET_ERROR',
+    payload: { result: { error: '' } },
+  });
 };
 
 const setLoading = (dispatch, isLoading) => {

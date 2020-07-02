@@ -48,7 +48,10 @@ const fetchLaunchPad = (landpadId) => {
       })
       .catch((error) => {
         resolve({
-          error: `Error in fetching landing pad details: `,
+          error:
+            error && error.response && error.response.statusText
+              ? error.response.statusText
+              : `Error in fetching landing pad details `,
           details: error.message,
           status: false,
         });

@@ -12,11 +12,13 @@ router.get('/capsules', async (req, res) => {
   console.log(temp);
   getCapsules()
     .then((capsulesData) => {
-      res.status(200).json({ status: true, capsulesData });
+      res.status(200).json({ result: { capsulesData, status: true } });
     })
     .catch((error) => {
       //log error
-      res.status(400).json({ message: 'Error in getting the capsules data', status: false });
+      res
+        .status(400)
+        .json({ result: { message: 'Error in getting the capsules data', status: false } });
     });
 });
 
@@ -28,9 +30,15 @@ router.get('/landingpad/:id', async (req, res) => {
 
   const result = await landingProvider(landingId);
 
-  res.status(200).json({
-    result: result,
-  });
+  if (result.status) {
+    res.status(200).json({
+      result: result,
+    });
+  } else {
+    res.status(400).json({
+      result: result,
+    });
+  }
 });
 
 module.exports = router;

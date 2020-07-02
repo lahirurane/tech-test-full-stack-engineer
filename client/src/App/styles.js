@@ -10,6 +10,7 @@ const Application = styled.div`
 
 const HomePageWrapper = styled.div`
   height: 100vh;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   @media (max-width: 768px) {
@@ -19,19 +20,28 @@ const HomePageWrapper = styled.div`
 
 const ConsoleWrapper = styled.div`
   height: 66%;
-  padding: 1rem 1rem 0 1rem;
+  max-height: 66%;
+  min-height: 66%;
+
   @media (max-width: 768px) {
-    width: 66%;
-    height: 100%;
+    max-width: 66%;
+    min-width: 66%;
+    max-height: 97%;
+    min-height: 97%;
   }
 `;
 
 const ControlWrapper = styled.div`
-  height: 33%;
-  padding: 1rem;
+  max-height: 32%;
+  min-height: 32%;
+  padding-top: 1rem;
   @media (max-width: 768px) {
-    width: 33%;
-    height: 100%;
+    padding-top: 0;
+    padding-left: 1rem;
+    max-width: 32%;
+    min-width: 32%;
+    max-height: 97%;
+    min-height: 97%;
   }
 `;
 
